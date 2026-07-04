@@ -2,7 +2,7 @@ Name:           platesmith
 Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Forge SVGs into multi-color Bambu Lab 3MF plates
-License:        MIT
+License:        GPL-3.0-or-later
 URL:            https://github.com/bkiu/platesmith
 Source0:        platesmith-%{version}.tar.gz
 Source1:        platesmith.service

@@ -2,7 +2,7 @@
 name = "platesmith"
 version = "1.0.0"
 description = "Forge SVGs into multi-color Bambu Lab 3MF plates"
-license = {text = "MIT"}
+license = {text = "GPL-3.0-or-later"}
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.110",
