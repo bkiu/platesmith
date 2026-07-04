@@ -70,6 +70,12 @@ different defaults.
 docker run -d --name platesmith -p 8137:8137 ghcr.io/bkiu/platesmith:latest
 ```
 
+Or with compose (uses the GHCR image, falls back to a local build):
+
+```sh
+docker compose up -d
+```
+
 Or build locally (`podman` works too):
 
 ```sh

@@ -52,7 +52,7 @@ plate = rounded_rect(228, 228, 62)
 plate_top = iso(plate)
 plate_side = swept_sides(plate_top, PLATE_D)
 
-star_shape = star(-18, -22, 74, 31)
+star_shape = star(-26, -30, 66, 28)
 star_top = iso(star_shape, rise=STAR_D)
 star_side = swept_sides(star_top, STAR_D).intersection(
     unary_union([plate_top, translate(plate_top, 0, -400)]).buffer(0)
@@ -60,7 +60,7 @@ star_side = swept_sides(star_top, STAR_D).intersection(
 # clip not needed: star sits fully on the plate; keep raw sides
 star_side = swept_sides(star_top, STAR_D)
 
-dot_shape = Point(62, 58).buffer(26, quad_segs=24)
+dot_shape = Point(70, 68).buffer(24, quad_segs=24)
 dot_top = iso(dot_shape, rise=DOT_D)
 dot_side = swept_sides(dot_top, DOT_D)
 
