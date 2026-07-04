@@ -1,0 +1,10 @@
+[Unit]
+Description=Platesmith — SVG to Bambu 3MF plate builder
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/platesmith --host 0.0.0.0 --port 8137
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

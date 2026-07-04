@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platesmith — SVG → Bambu 3MF</title>
+<link rel="icon" href="/static/logo.svg">
+<link rel="stylesheet" href="/static/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "/static/vendor/three.module.min.js",
+    "three/addons/": "/static/vendor/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<aside id="sidebar">
+  <header>
+    <h1><img src="/static/logo.svg" alt="" class="logo">Platesmith</h1>
+    <input id="design-name" type="text" spellcheck="false" title="Design name">
+  </header>
+
+  <section>
+    <h2>Base plate</h2>
+    <div class="row">
+      <label>W <input id="plate-w" type="number" min="5" max="256" step="1"> mm</label>
+      <label>H <input id="plate-h" type="number" min="5" max="256" step="1"> mm</label>
+    </div>
+    <div class="row">
+      <label>Thick <input id="plate-t" type="number" min="0.4" max="50" step="0.2"> mm</label>
+      <label class="color-label">Color <input id="plate-color" type="color"></label>
+    </div>
+    <div class="row radius-row">
+      <label class="grow">Corner radius
+        <input id="plate-r" type="range" min="0" max="50" step="0.5">
+      </label>
+      <span id="plate-r-val" class="val"></span>
+    </div>
+  </section>
+
+  <section class="grow">
+    <div class="section-head">
+      <h2>SVG layers</h2>
+      <button id="add-svg" class="small">+ Add SVG</button>
+      <input id="file-input" type="file" accept=".svg,image/svg+xml" multiple hidden>
+    </div>
+    <ul id="item-list"></ul>
+
+    <div id="item-props" hidden>
+      <div class="row">
+        <label>W <input id="item-w" type="number" min="1" step="1"> mm</label>
+        <label>H <span id="item-h" class="val"></span></label>
+      </div>
+      <div class="row">
+        <label>Thick <input id="item-t" type="number" min="0.2" max="50" step="0.2"> mm</label>
+        <label class="color-label">Color <input id="item-color" type="color"></label>
+      </div>
+      <div class="row">
+        <label>X <input id="item-x" type="number" step="0.5"> mm</label>
+        <label>Y <input id="item-y" type="number" step="0.5"> mm</label>
+      </div>
+      <div class="row">
+        <label>Rotate <input id="item-rot" type="number" step="1"> °</label>
+        <span class="spacer"></span>
+        <button id="item-dup" class="small" title="Duplicate">⧉</button>
+        <button id="item-del" class="small danger" title="Delete">✕</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <button id="export" class="primary">Export 3MF</button>
+    <button id="fit" class="small">Fit view</button>
+  </section>
+</aside>
+
+<main id="canvas-wrap">
+  <div id="view-toggle">
+    <button id="view-2d" class="active">2D</button>
+    <button id="view-3d">3D</button>
+  </div>
+  <div id="view3d" hidden></div>
+  <svg id="canvas">
+    <defs>
+      <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <path d="M10 0H0V10" fill="none" class="grid-line"/>
+      </pattern>
+    </defs>
+    <rect id="grid-bg" fill="url(#grid)"/>
+    <g id="scene">
+      <rect id="plate"/>
+      <g id="items"></g>
+    </g>
+    <g id="overlay"></g>
+  </svg>
+  <div id="hint">Drag to move · corners to resize · scroll to zoom · drag background to pan</div>
+</main>
+
+<div id="toasts"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

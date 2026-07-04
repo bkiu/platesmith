@@ -1,0 +1,8 @@
+.git
+.venv
+dist
+tests
+__pycache__
+**/__pycache__
+.pytest_cache
+*.3mf
